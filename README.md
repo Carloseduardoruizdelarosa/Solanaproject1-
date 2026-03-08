@@ -1,164 +1,142 @@
-# Contador en Solana
+# Todo List en Solana
 
 ## Descripción
 
-Este proyecto es un *smart contract simple en Solana* que implementa un contador almacenado en la blockchain.
-Permite *crear un contador e incrementarlo*, demostrando conceptos básicos del desarrollo en Solana como cuentas, transacciones y almacenamiento de datos.
+Este proyecto es un *smart contract* desarrollado en la blockchain de Solana utilizando Anchor.
+El programa permite crear y gestionar una lista de tareas (Todo List) donde los usuarios pueden crear, completar y eliminar tareas.
 
-El proyecto está desarrollado usando *Rust y Anchor*.
+El objetivo del proyecto es demostrar cómo almacenar y manejar datos en la blockchain usando cuentas de Solana.
 
 ---
 
 # Características
 
-* Crear un contador en la blockchain
-* Incrementar el valor del contador
-* Almacenar datos en una cuenta de Solana
-* Interactuar con el programa mediante cliente y tests
+* Crear una tarea nueva
+* Marcar una tarea como completada
+* Eliminar una tarea
+* Guardar datos directamente en la blockchain
+* Uso del framework Anchor para simplificar el desarrollo
 
 ---
 
 # Tecnologías utilizadas
 
-* Rust
-* Anchor Framework
-* Solana Playground
-* TypeScript (para tests y client)
+* Blockchain: Solana
+* Framework: Anchor Framework
+* Entorno de desarrollo: Solana Playground
+* Lenguaje del programa: Rust
+* Lenguaje del cliente y tests: TypeScript
 
 ---
 
 # Estructura del proyecto
 
-id="ks2eow"
-project/
+
+solana-todo
 │
-├─ programs/
-│   └─ contador_solana/
-│       └─ src/lib.rs
+├── programs
+│   └── todo_list
+│       └── src
+│           └── lib.rs
 │
-├─ tests/
-│   └─ contador.ts
+├── tests
+│   └── todo_list.ts
 │
-├─ client/
-│   └─ client.ts
+├── client
+│   └── client.ts
 │
-└─ README.md
+└── README.md
 
 
 ---
 
 # Funcionamiento del programa
 
-El contrato contiene dos funciones principales:
+El programa maneja una cuenta llamada *Task* que almacena la información de cada tarea.
 
-### initialize
+### Estructura de la cuenta
 
-Crea una cuenta de contador en la blockchain con valor inicial *0*.
-
-id="ms7p2j"
-initialize()
-
+* authority → dirección de la wallet del dueño de la tarea
+* content → descripción de la tarea
+* completed → estado de la tarea (completada o no)
 
 ---
 
-### increment
+# Instrucciones del programa
 
-Incrementa el valor del contador en *1*.
+## 1. Crear tarea
 
-id="g5kbv4"
-increment()
+Crea una nueva tarea en la blockchain.
+
+Parámetros:
+
+* contenido de la tarea
+
+Resultado:
+
+* se crea una cuenta con la tarea guardada
+
+---
+
+## 2. Completar tarea
+
+Marca la tarea como completada.
+
+Resultado:
+
+* el campo completed cambia a true
+
+---
+
+## 3. Eliminar tarea
+
+Elimina la tarea y devuelve la renta al usuario.
+
+---
+
+# Instalación y uso
+
+### 1. Clonar el repositorio
+
+
+git clone https://github.com/tuusuario/solana-todo.git
+cd solana-todo
+
+
+### 2. Compilar el programa
+
+
+anchor build
+
+
+### 3. Ejecutar tests
+
+
+anchor test
+
+
+### 4. Ejecutar el cliente
+
+
+ts-node client/client.ts
 
 
 ---
 
 # Ejemplo de uso
 
-1. Crear contador:
-
-id="m6w7q5"
-contador = 0
-
-
-2. Incrementar:
-
-id="38o1k3"
-contador = 1
-
-
-3. Incrementar nuevamente:
-
-id="28b42n"
-contador = 2
-
-
-El valor se guarda permanentemente en la blockchain.
+1. El usuario crea una tarea.
+2. La tarea se guarda en una cuenta en la blockchain.
+3. El usuario puede actualizar el estado de la tarea.
+4. La tarea puede eliminarse cuando ya no se necesite.
 
 ---
 
-# Cómo ejecutar el proyecto
+# Objetivo del proyecto
 
-### 1. Abrir Solana Playground
+Este proyecto sirve como ejemplo educativo para aprender:
 
-Crear un nuevo proyecto Anchor.
-
----
-
-### 2. Copiar el programa
-
-Pegar el código en:
-
-id="6orj0i"
-lib.rs
-
-
----
-
-### 3. Compilar el programa
-
-id="hjw8ju"
-Build
-
-
----
-
-### 4. Desplegar el programa
-
-id="87njbb"
-Deploy
-
-
----
-
-### 5. Ejecutar tests o cliente
-
-Se puede interactuar con el contrato usando:
-
-* tests en TypeScript
-* cliente JavaScript/TypeScript
-
----
-
-# Conceptos de Solana demostrados
-
-Este proyecto demuestra:
-
-* Programas (Smart Contracts)
-* Cuentas en Solana
-* Transacciones
-* Interacción con cliente
-
----
-
-# Posibles mejoras
-
-* Reiniciar el contador
-* Decrementar el contador
-* Crear múltiples contadores
-* Agregar control de acceso
-* Crear interfaz web con React
-
----
-
-# Autor
-
-Proyecto educativo para aprender desarrollo en Solana usando Anchor.# Solanaproject1-
+* Desarrollo de smart contracts en Solana
+* Uso del framework Anchor
+* Manejo de cuentas en la blockchain
+* Interacción con contratos mediante TypeScript
